@@ -11,7 +11,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <h2 class="text-center display-4">Regsiter</h2>
+        <h2 class="text-center display-4">Register</h2>
     </div><br />
     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
         {{ csrf_field() }}

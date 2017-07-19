@@ -14,7 +14,7 @@
 @section('content')
 <div class="container">
 	<div class="jumbotron">
-		<h1 class="display-3">EdPaper</h1>
+		<h1 class="display-3">EdPaper (WIP Unstable)</h1>
 		<p class="lead">EdPaper helps you organizing your paperwork. Seamless and easy.</p>
 		<hr class="my-6">
 		<p class="lead">
