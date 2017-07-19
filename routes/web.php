@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Auth::routes();
+// post workaround for logout
+Route::get('/logout', 'Auth\LoginController@logout');
