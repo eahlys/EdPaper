@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use Auth;
 use \Input;
 use App\User;
+use App\Doc;
 
 class DashController extends Controller
 {
 	public function index(){
 		if (!Auth::check()) return view('index');
-		return view('dashboard');
+		$lastDocs = Doc::where('userId', Auth::user()->id)->orderBy('id', 'desc')->limit(5)->get();
+		$numberDocs = Doc::where('userId', Auth::user()->id)->count();
+		return view('dashboard', ['lastDocs' => $lastDocs, 'numberDocs' => $numberDocs]);
 	}
 
 	public function account(){
@@ -25,9 +28,11 @@ class DashController extends Controller
 		if (!Auth::check()) return redirect('/login');
 		$this->validate($request, [
 			'name' => 'max:30|required',
+			'email' => 'required|email'
 			]);
 		$user = User::where('id', Auth::user()->id)->first();
 		$user->name = Input::get('name');
+		$user->email = Input::get('email');
 		$user->save();
 		return redirect('/account');
 	}

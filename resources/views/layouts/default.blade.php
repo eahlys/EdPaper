@@ -18,7 +18,7 @@
 		font-family:Oswald;
 	}
 	body {
-		margin-top:60px;
+		margin-top:80px;
 	}
 	.alert {
 		margin-bottom: 10px;
