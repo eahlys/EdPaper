@@ -10,11 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('index');
-});
-
 Auth::routes();
 // post workaround for logout
 Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('/', 'DashController@index');
+Route::get('/account', 'DashController@account');
+Route::post('/account', 'DashController@editAccount');

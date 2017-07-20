@@ -8,9 +8,6 @@
 <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
 @endsection
 
-@section('script')
-@endsection
-
 @section('content')
 <div class="container">
 	<div class="jumbotron">
