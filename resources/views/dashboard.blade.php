@@ -51,11 +51,10 @@
 		@else
 		<tbody>
 			<tr class="text-center">
+				<td></td>
 				<td>
 					<i>Nothing to see here</i>
 				</td>
-				<td></td>
-				<td></td>
 			</tr>
 		</tbody>
 		@endif

@@ -37,8 +37,9 @@
 				</tbody>
 				@endif
 			</table>
+			<p class="text-center"><a href="/cat/all">Show all documents ({{ $numberDocs }})</a></p>
 			<form class="form-inline" method="POST" action="/cat/add" style="margin-bottom: 10px;">
-			{{ csrf_field() }}
+				{{ csrf_field() }}
 				<div class="input-group col-xs-12">
 					<input type="text" class="form-control" name="title" id="title" maxlength="20" placeholder="New category...">
 					<span class="input-group-btn">

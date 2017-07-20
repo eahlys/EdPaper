@@ -15,6 +15,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'DashController@index');
 Route::get('/cat', 'CategoriesController@listall');
+Route::get('/cat/all', 'CategoriesController@listallfiles');
 Route::post('/cat/add', 'CategoriesController@add');
 Route::get('/cat/{id}', 'CategoriesController@list')->where('id', '[0-9]+');
 Route::get('/cat/{id}/edit', 'CategoriesController@edit')->where('id', '[0-9]+');

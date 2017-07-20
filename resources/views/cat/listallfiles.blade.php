@@ -1,6 +1,6 @@
 @extends('layouts/default')
 
-@section('pagetitle') {{ $cat->title }} - EdPaper @endsection
+@section('pagetitle') All documents - EdPaper @endsection
 
 @section('navbar')
 <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
@@ -12,7 +12,7 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<h2 class="col-sm-4">{{ $cat->title }}</h2>
+		<h2 class="col-sm-4">All documents</h2>
 	</div>
 
 	<table class="table table-striped table-hover">

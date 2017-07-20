@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use \Input;
 use App\User;
+use App\Doc;
 use App\Categorie;
 
 class CategoriesController extends Controller
@@ -13,7 +14,8 @@ class CategoriesController extends Controller
 	public function listall(){
 		if (!Auth::check()) return redirect('/login');
 		$cats = Categorie::where('userId', Auth::user()->id)->orderBy('title', 'ASC')->get();
-		return view('cat.listall', ['cats' => $cats]);
+		$numberDocs = Doc::where('userId', Auth::user()->id)->count();
+		return view('cat.listall', ['cats' => $cats, 'numberDocs' => $numberDocs]);
 	}
 
 	public function list($id){
@@ -22,6 +24,12 @@ class CategoriesController extends Controller
 		if ($cat->userId != Auth::user()->id) return redirect('/login');
 		$docs = $cat->docs()->orderBy('title', 'ASC')->get();;
 		return view('cat.list', ['docs' => $docs, 'cat' => $cat]);
+	}
+
+	public function listallfiles(){
+		if (!Auth::check()) return redirect('/login');
+		$docs = Doc::where('userId', Auth::user()->id)->orderBy('title', 'ASC')->get();
+		return view('cat.listallfiles', ['docs' => $docs]);
 	}
 
 	public function add(Request $request){
@@ -62,6 +70,7 @@ class CategoriesController extends Controller
 		if (!Auth::check()) return redirect('/login');
 		$cat = Categorie::where('id', $id)->firstOrFail();
 		if ($cat->userId != Auth::user()->id) return redirect('/login');
+		$cat->docs()->detach();
 		$cat->forceDelete();
 		return redirect('/cat');
 	}
