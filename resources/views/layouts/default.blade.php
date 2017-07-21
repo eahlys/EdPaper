@@ -9,9 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald">
 	<link rel=stylesheet type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	
-
-	<script src="/jquery.js"></script>
-	<script src="/bootstrap.min.js"></script>
 	<title>@yield('pagetitle')</title>
 	<style>
 	.navbar-brand, .nav-link{
@@ -54,6 +51,9 @@
 	<h5 class="text-center"><small><i>Made by Pierre T. - <a href="https://github.com/Edraens">Edraens</a>, 2017</i></small></h5>
 </div>
 </div><br />
+	<script src="/jquery.js"></script>
+	<script src="/bootstrap.min.js"></script>
+	<script src="/bootstrap-confirmation.js"></script>
 </footer>
 
 </html>

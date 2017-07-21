@@ -14,6 +14,13 @@
 	<div class="row">
 		<h2 class="text-center">Categories</h2>
 	</div>
+	@if ( count( $errors ) > 0 )
+	<div class="alert alert-danger">
+		@foreach ($errors->all() as $error)
+		{{ $error }}<br>        
+		@endforeach
+	</div>
+	@endif
 	<div class="row">
 		<div class="col-sm-offset-3 col-sm-6">
 			<table class="table table-striped table-hover table-sm">
@@ -23,7 +30,7 @@
 					<tr>
 						<td class="col-xs-10 text-center"><a href="/cat/{{ $cat->id }}">{{ $cat->title }}</a></td>
 						<td class="col-xs-1"><a href="/cat/{{ $cat->id }}/edit"><i class="fa fa-edit"></i></a></td>
-						<td class="col-xs-1"><a href="/cat/{{ $cat->id }}/delete"><i class="fa fa-trash"></i></a></td>
+						<td class="col-xs-1"><a href="/cat/{{ $cat->id }}/delete" data-toggle="confirmation" data-title="Sure?"><i class="fa fa-trash"></i></a></td>
 					</tr>
 					@endforeach
 				</tbody>

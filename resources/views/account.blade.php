@@ -13,7 +13,15 @@
 <div class="container">
     <div class="row">
         <h2 class="text-center display-4">Account management</h2>
-    </div><br />
+    </div>
+    @if ( count( $errors ) > 0 )
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+        {{ $error }}<br>        
+        @endforeach
+    </div>
+    @endif
+    <br />
     <form class="form-horizontal" role="form" method="POST" action="/account">
         {{ csrf_field() }}
 
@@ -24,7 +32,7 @@
                 <input id="name" type="text" class="form-control" name="name" maxlength="30" value="{{ $user->name }}" >
             </div>
         </div>
-         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
             <label for="email" class="col-md-4 control-label">E-mail Address</label>
 
             <div class="col-md-3">

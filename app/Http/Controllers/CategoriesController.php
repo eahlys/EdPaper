@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Auth;
 use \Input;
 use App\User;
@@ -21,14 +22,14 @@ class CategoriesController extends Controller
 	public function list($id){
 		if (!Auth::check()) return redirect('/login');
 		if ($id == 0) {
-			$docs = Doc::where('userId', Auth::user()->id)->orderBy('title', 'ASC')->get();
+			$docs = Doc::where('userId', Auth::user()->id)->orderBy('title', 'ASC')->paginate(15);
 			$catTitle = "All documents";
 		}
 		else {
 			$cat = Categorie::where('id', $id)->firstOrFail();
 			$catTitle = $cat->title;
 			if ($cat->userId != Auth::user()->id) return redirect('/login');
-			$docs = $cat->docs()->orderBy('title', 'ASC')->get();;
+			$docs = $cat->docs()->orderBy('title', 'ASC')->paginate(15);
 		}
 		return view('cat.list', ['docs' => $docs, 'catTitle' => $catTitle]);
 	}
@@ -39,7 +40,7 @@ class CategoriesController extends Controller
 			]);
 		if (!Auth::check()) return redirect('/login');
 		$checkExists = Categorie::where([['userId', '=', Auth::user()->id], ['title', '=', Input::get('title')]])->first();
-		if (!is_null($checkExists)) return redirect('/cat');
+		if (!is_null($checkExists)) return Redirect::back()->withErrors(['A category with the same title already exists']);;
 
 		Categorie::create([
 			'userId' => Auth::user()->id,

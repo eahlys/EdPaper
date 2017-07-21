@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Auth;
 use \Input;
 use App\User;
@@ -13,8 +14,7 @@ class DashController extends Controller
 	public function index(){
 		if (!Auth::check()) return view('index');
 		$lastDocs = Doc::where('userId', Auth::user()->id)->orderBy('id', 'desc')->limit(5)->get();
-		$numberDocs = Doc::where('userId', Auth::user()->id)->count();
-		return view('dashboard', ['lastDocs' => $lastDocs, 'numberDocs' => $numberDocs]);
+		return view('dashboard', ['lastDocs' => $lastDocs]);
 	}
 
 	public function account(){
@@ -31,6 +31,8 @@ class DashController extends Controller
 			'email' => 'required|email'
 			]);
 		$user = User::where('id', Auth::user()->id)->first();
+		$checkEmail = User::where('email', Input::get('email'))->first();
+		if (!is_null($checkEmail) && $checkEmail->id != Auth::user()->id) return Redirect::back()->withErrors(['Specified e-mail address already exists']);
 		$user->name = Input::get('name');
 		$user->email = Input::get('email');
 		$user->save();

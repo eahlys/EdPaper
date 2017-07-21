@@ -12,34 +12,46 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<h2 class="col-sm-4">{{ $catTitle }}</h2>
+		<div class="col-sm-4">
+			<h2>{{ $catTitle }}</h2>
+		</div>
 	</div>
 
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
 				<th class="col-xs-2">Uploaded</th>
-				<th class="col-xs-10">Title</th>
+				<th class="col-xs-9">Title</th>
+				<th class="col-xs-1"></th>
 			</tr>
 		</thead>
 		@if (count($docs) > 0)
 		<tbody>	
-			@foreach ($docs as $doc)
-			<td>{{ $doc->created_at->format('d/m/Y H:i:s') }}</td>
-			<td><a href="/{{ $doc->id }}">{{ $doc->title }}</a></td>
-		</tr>
-		@endforeach
-	</tbody>
-	@else
-	<tbody>
-		<tr class="text-center">
-			<td></td>
-			<td>
-				<i>Nothing to see here</i>
-			</td>
-		</tr>
-	</tbody>
-	@endif
-</table>
+			<tr>
+				@foreach ($docs as $doc)
+				<td>{{ $doc->created_at->format('d/m/Y H:i:s') }}</td>
+				<td><a href="/doc/{{ $doc->id }}">{{ $doc->title }}</a></td>
+				<td>
+					<a href="/doc/{{ $doc->id }}/view" target="_blank"><i class="fa fa-eye"></i></a>  
+					<a href="/doc/{{ $doc->id }}/download"><i class="fa fa-download"></i></a>
+				</td>
+			</tr>
+			@endforeach
+		</tbody>
+		@else
+		<tbody>
+			<tr class="text-center">
+				<td></td>
+				<td>
+					<i>Nothing to see here</i>
+				</td>
+				<td></td>
+			</tr>
+		</tbody>
+		@endif
+	</table>
+	<div class="col-sm-8 pull-right">
+		{{ $docs->links() }}
+	</div>
 </div>
 @endsection

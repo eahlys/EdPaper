@@ -17,9 +17,10 @@ Route::get('/', 'DashController@index');
 
 Route::get('/doc/add', 'DocumentsController@add');
 Route::post('/doc/add', 'DocumentsController@upload');
-Route::get('/doc/{id}', 'DocumentsController@list')->where('id', '[0-9]+');
-Route::get('/doc/{id}/edit', 'DocumentsController@edit')->where('id', '[0-9]+');
-Route::post('/doc/{id}/edit', 'DocumentsController@sendedit')->where('id', '[0-9]+');
+Route::get('/doc/{id}', 'DocumentsController@show')->where('id', '[0-9]+');
+Route::post('/doc/{id}', 'DocumentsController@edit')->where('id', '[0-9]+');
+Route::get('/doc/{id}/view', 'DocumentsController@viewfile')->where('id', '[0-9]+');
+Route::get('/doc/{id}/download', 'DocumentsController@download')->where('id', '[0-9]+');
 Route::get('/doc/{id}/delete', 'DocumentsController@delete')->where('id', '[0-9]+');
 
 Route::get('/cat', 'CategoriesController@listall');
