@@ -55,7 +55,7 @@
 			<iframe src="/doc/{{ $doc->id }}/view" width="100%" height="500px" scrolling="no"></iframe>
 		</div>
 		<div class="col-sm-4">
-			<p class="text-center">Uploaded : {{ $doc->created_at->format('d/m/Y H:i:s') }}</p>
+			<p class="text-center">Uploaded : {{ $doc->created_at->format('d/m/Y H:i') }}</p>
 			<form class="form-horizontal" role="form" method="POST" action="/doc/{{ $doc->id }}">
 				{{ csrf_field() }}
 

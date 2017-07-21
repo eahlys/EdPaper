@@ -30,5 +30,7 @@ Route::get('/cat/{id}/edit', 'CategoriesController@edit')->where('id', '[0-9]+')
 Route::post('/cat/{id}/edit', 'CategoriesController@sendedit')->where('id', '[0-9]+');
 Route::get('/cat/{id}/delete', 'CategoriesController@delete')->where('id', '[0-9]+');
 
+Route::get('/search', 'SearchController@search');
+
 Route::get('/account', 'DashController@account');
 Route::post('/account', 'DashController@editAccount');

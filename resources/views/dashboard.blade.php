@@ -1,4 +1,6 @@
-
+<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 @extends('layouts/default')
 
 @section('pagetitle') Dashboard - EdPaper @endsection
@@ -21,7 +23,6 @@
 					</div>
 					<div class="col-xs-2">
 						<button type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-						<a href="/search" class="btn btn-warning"><i class="fa fa-cog"></i></a>
 					</div>
 				</form>
 			</div>
@@ -50,7 +51,7 @@
 		<tbody>	
 			@foreach ($lastDocs as $doc)
 			<tr>
-				<td>{{ $doc->created_at->format('d/m/Y H:i:s') }}</td>
+				<td>{{ $doc->created_at->format('d/m/Y H:i') }}</td>
 				<td><a href="/doc/{{ $doc->id }}">{{ $doc->title }}</a></td>
 			</tr>
 			@endforeach

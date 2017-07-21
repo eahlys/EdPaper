@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Doc extends Model
 {
+	
 	protected $fillable = [
 	'userId', 'title', 'docname'
 	];
