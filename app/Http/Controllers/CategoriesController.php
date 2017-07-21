@@ -20,16 +20,17 @@ class CategoriesController extends Controller
 
 	public function list($id){
 		if (!Auth::check()) return redirect('/login');
-		$cat = Categorie::where('id', $id)->firstOrFail();
-		if ($cat->userId != Auth::user()->id) return redirect('/login');
-		$docs = $cat->docs()->orderBy('title', 'ASC')->get();;
-		return view('cat.list', ['docs' => $docs, 'cat' => $cat]);
-	}
-
-	public function listallfiles(){
-		if (!Auth::check()) return redirect('/login');
-		$docs = Doc::where('userId', Auth::user()->id)->orderBy('title', 'ASC')->get();
-		return view('cat.listallfiles', ['docs' => $docs]);
+		if ($id == 0) {
+			$docs = Doc::where('userId', Auth::user()->id)->orderBy('title', 'ASC')->get();
+			$catName = "All documents";
+		}
+		else {
+			$cat = Categorie::where('id', $id)->firstOrFail();
+			$catName = $cat->name;
+			if ($cat->userId != Auth::user()->id) return redirect('/login');
+			$docs = $cat->docs()->orderBy('title', 'ASC')->get();;
+		}
+		return view('cat.list', ['docs' => $docs, 'catName' => $catName]);
 	}
 
 	public function add(Request $request){

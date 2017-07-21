@@ -1,3 +1,4 @@
+
 @extends('layouts/default')
 
 @section('pagetitle') Dashboard - EdPaper @endsection
@@ -12,8 +13,8 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<h2 class="col-sm-4">Dashboard</h2>
-		<div class="row  col-xs-8 pull-right">
+		<h2 class="col-sm-3">Dashboard</h2>
+		<div class="row col-xs-12 col-sm-8 pull-right">
 			<form class="form-inline">
 				<div class="input-group pull-right col-xs-9">
 					<input type="text" name="search" class="form-control" placeholder="Look for a document..." autofocus>
@@ -30,7 +31,10 @@
 
 
 	<div class="row">
-		<h4 class="col-xs-10">Latest documents</h4>
+		<h4 class="col-xs-9">Latest documents</h4>
+		<div class="col-xs-2">
+		<a href="/doc/add" class="btn btn-success pull-right"><i class="fa fa-upload fa-2x"></i></a>
+		</div>
 	</div>
 	<table class="table table-striped table-hover">
 		<thead>
