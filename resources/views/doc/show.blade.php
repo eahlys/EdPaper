@@ -10,6 +10,18 @@
 <li class="nav-item"><a href="/logout" class="nav-link">Logout <i>({{ Auth::user()->name }})</i></a></li>
 @endsection
 
+@section('style')
+<style>
+.pdfobject-container { height: 600px;}
+.pdfobject { border: 1px solid #666; }
+</style>
+@endsection
+
+@section('script')
+<script src="/pdfobject.min.js"></script>
+<script>PDFObject.embed("/doc/{{ $doc->id }}/view", "#pdfview");</script>
+@endsection
+
 @section('content')
 <div class="container">
 	@if ( count( $errors ) > 0 )
@@ -56,7 +68,8 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-8">
-			<iframe src="/doc/{{ $doc->id }}/view" width="100%" height="500px" scrolling="no"></iframe>
+			{{-- <iframe src="/doc/{{ $doc->id }}/view" width="100%" height="500px" scrolling="no"></iframe> --}}
+			<div id="pdfview"></div>
 		</div>
 		<div class="col-sm-4">
 			<p class="text-center">Uploaded : {{ $doc->created_at->format('d/m/Y H:i') }}</p>

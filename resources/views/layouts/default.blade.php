@@ -11,18 +11,17 @@
 	
 	<title>@yield('pagetitle')</title>
 	<style>
-	.navbar-brand, .nav-link{
-		font-family:Oswald;
-	}
-	body {
-		margin-top:80px;
-	}
-	.alert {
-		margin-bottom: 10px;
-	}
+		.navbar-brand, .nav-link{
+			font-family:Oswald;
+		}
+		body {
+			margin-top:80px;
+		}
+		.alert {
+			margin-bottom: 10px;
+		}
 	</style>
 	@yield('style')
-	@yield('script')
 	<nav class="navbar navbar-fixed-top navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -46,14 +45,14 @@
 	@yield('content')
 </body>
 <footer>
-<div class="container">
-<div class="row">
-	<h5 class="text-center"><small><i>Made by Pierre T. - <a href="https://github.com/Edraens">Edraens</a>, 2017</i></small></h5>
-</div>
-</div><br />
+	<div class="container">
+		<div class="row">
+			<h5 class="text-center"><small><i>Made by Pierre T. - <a href="https://github.com/Edraens">Edraens</a>, 2017</i></small></h5>
+		</div>
+	</div><br />
 	<script src="/jquery.js"></script>
 	<script src="/bootstrap.min.js"></script>
-	<script src="/bootstrap-confirmation.js"></script>
+	@yield('script')
 </footer>
 
 </html>
