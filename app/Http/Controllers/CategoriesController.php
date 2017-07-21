@@ -22,15 +22,15 @@ class CategoriesController extends Controller
 		if (!Auth::check()) return redirect('/login');
 		if ($id == 0) {
 			$docs = Doc::where('userId', Auth::user()->id)->orderBy('title', 'ASC')->get();
-			$catName = "All documents";
+			$catTitle = "All documents";
 		}
 		else {
 			$cat = Categorie::where('id', $id)->firstOrFail();
-			$catName = $cat->name;
+			$catTitle = $cat->title;
 			if ($cat->userId != Auth::user()->id) return redirect('/login');
 			$docs = $cat->docs()->orderBy('title', 'ASC')->get();;
 		}
-		return view('cat.list', ['docs' => $docs, 'catName' => $catName]);
+		return view('cat.list', ['docs' => $docs, 'catTitle' => $catTitle]);
 	}
 
 	public function add(Request $request){
