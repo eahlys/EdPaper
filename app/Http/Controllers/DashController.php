@@ -14,7 +14,6 @@ class DashController extends Controller
 	public function index(){
 		if (!Auth::check()) return view('index');
 		$lastDocs = Doc::where('userId', Auth::user()->id)->orderBy('id', 'desc')->limit(5)->get();
-		Doc::setSettings();
 		return view('dashboard', ['lastDocs' => $lastDocs]);
 	}
 

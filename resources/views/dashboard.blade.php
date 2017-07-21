@@ -23,7 +23,6 @@
               </div>
               <div class="col-xs-2">
                 <button type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
-                <img src="https://www.algolia.com/static_assets/images/press/downloads/algolia-mark-blue.png" alt="algolia" height="30px">
               </div>
             </form>
           </div>

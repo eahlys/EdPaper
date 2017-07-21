@@ -24,9 +24,6 @@
     					<div class="col-xs-1">
     						<button type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
     					</div>
-              <div class="col-xs-2">
-              <img src="https://www.algolia.com/static_assets/images/press/downloads/algolia-logo-light.png" alt="algolia" width="180px">
-              </div>
             </form>
           </div>
         </div>
@@ -43,13 +40,16 @@
       <tbody>	
        <tr>
         @foreach ($results as $doc)
-        <td>{{ $doc['created_at'] }}</td>
+        <td>{{ $doc->created_at }}</td>
         <td>
-          <a href="/doc/{{ $doc['id'] }}">{{ $doc['title'] }}</a>
+          <a href="/doc/{{ $doc->id }}">{{ $doc->title }}</a>
+          @foreach ($doc->categories()->get() as $cat)
+          <a href="/cat/{{ $cat->id }}"><span class="badge badge-default">{{ $cat->title }}</span></a>
+          @endforeach
         </td>
         <td>
-         <a href="/doc/{{ $doc['id'] }}/view" target="_blank"><i class="fa fa-eye"></i></a>  
-         <a href="/doc/{{ $doc['id'] }}/download"><i class="fa fa-download"></i></a>
+         <a href="/doc/{{ $doc->id }}/view" target="_blank"><i class="fa fa-eye"></i></a>  
+         <a href="/doc/{{ $doc->id }}/download"><i class="fa fa-download"></i></a>
        </td>
      </tr>
      @endforeach
@@ -66,5 +66,8 @@
  </tbody>
  @endif
 </table>
+<div class="col-sm-8 pull-right">
+  {{ $docs->links() }}
+</div>
 </div>
 @endsection
