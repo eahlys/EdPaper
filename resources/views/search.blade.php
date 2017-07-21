@@ -67,7 +67,7 @@
  @endif
 </table>
 <div class="col-sm-8 pull-right">
-  {{ $docs->links() }}
+  {{ $results->links() }}
 </div>
 </div>
 @endsection
