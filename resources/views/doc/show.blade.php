@@ -47,7 +47,11 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-7">
-			<h2>{{ $doc->title }}</h2>
+			<h2>{{ $doc->title }}
+				@foreach ($doc->categories()->get() as $cat)
+				<a href="/cat/{{ $cat->id }}"><span class="badge badge-default">{{ $cat->title }}</span></a>
+				@endforeach
+			</h2>
 		</div>
 	</div>
 	<div class="row">

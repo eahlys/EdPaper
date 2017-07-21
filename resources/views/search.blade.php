@@ -41,28 +41,33 @@
     			<tr>
     				@foreach ($results as $doc)
     				<td>{{ $doc->created_at->format('d/m/Y H:i') }}</td>
-    				<td><a href="/doc/{{ $doc->id }}">{{ $doc->title }}</a></td>
     				<td>
-    					<a href="/doc/{{ $doc->id }}/view" target="_blank"><i class="fa fa-eye"></i></a>  
-    					<a href="/doc/{{ $doc->id }}/download"><i class="fa fa-download"></i></a>
-    				</td>
-    			</tr>
-    			@endforeach
-    		</tbody>
-    		@else
-    		<tbody>
-    			<tr class="text-center">
-    				<td></td>
-    				<td>
-    					<i>Nothing to see here</i>
-    				</td>
-    				<td></td>
-    			</tr>
-    		</tbody>
-    		@endif
-    	</table>
-    	<div class="col-sm-8 pull-right">
-    	{{ $results->links() }}
-    	</div>
-    </div>
-    @endsection
+                        <a href="/doc/{{ $doc->id }}">{{ $doc->title }}</a>
+                        @foreach ($doc->categories()->get() as $cat)
+                        <a href="/cat/{{ $cat->id }}"><span class="badge badge-default">{{ $cat->title }}</span></a>
+                        @endforeach
+                    </td>
+                    <td>
+                       <a href="/doc/{{ $doc->id }}/view" target="_blank"><i class="fa fa-eye"></i></a>  
+                       <a href="/doc/{{ $doc->id }}/download"><i class="fa fa-download"></i></a>
+                   </td>
+               </tr>
+               @endforeach
+           </tbody>
+           @else
+           <tbody>
+             <tr class="text-center">
+                <td></td>
+                <td>
+                   <i>Nothing to see here</i>
+               </td>
+               <td></td>
+           </tr>
+       </tbody>
+       @endif
+   </table>
+   <div class="col-sm-8 pull-right">
+       {{ $results->links() }}
+   </div>
+</div>
+@endsection

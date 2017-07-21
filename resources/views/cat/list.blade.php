@@ -30,7 +30,12 @@
 			<tr>
 				@foreach ($docs as $doc)
 				<td>{{ $doc->created_at->format('d/m/Y H:i') }}</td>
-				<td><a href="/doc/{{ $doc->id }}">{{ $doc->title }}</a></td>
+				<td>
+					<a href="/doc/{{ $doc->id }}">{{ $doc->title }}</a>
+					@foreach ($doc->categories()->get() as $cat)
+					<a href="/cat/{{ $cat->id }}"><span class="badge badge-default">{{ $cat->title }}</span></a>
+					@endforeach
+				</td>
 				<td>
 					<a href="/doc/{{ $doc->id }}/view" target="_blank"><i class="fa fa-eye"></i></a>  
 					<a href="/doc/{{ $doc->id }}/download"><i class="fa fa-download"></i></a>

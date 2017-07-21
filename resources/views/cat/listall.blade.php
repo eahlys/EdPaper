@@ -44,7 +44,9 @@
 				</tbody>
 				@endif
 			</table>
-			<p class="text-center"><a href="/cat/0">Show all documents ({{ $numberDocs }})</a></p>
+			<p class="text-center">
+				<a href="/cat/0">Show all documents ({{ $numberDocs }})</a>
+			</p>
 			<form class="form-inline" method="POST" action="/cat/add" style="margin-bottom: 10px;">
 				{{ csrf_field() }}
 				<div class="input-group col-xs-12">
