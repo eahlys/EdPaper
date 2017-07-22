@@ -1,4 +1,4 @@
-## DocMaster
+## EdPaper
 Demo : https://paper.edra.ovh
 
 DocMaster is a laravel-php driven Document organizer made for PDFs. They are stored on your server (unencrypted, beware !)
