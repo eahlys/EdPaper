@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="col-sm-1">
-         <a href="/doc/add" class="btn btn-success pull-right"><i class="fa fa-upload fa-2x"></i></a>
+         <a href="/doc/add" class="btn btn-success pull-right"><i class="fa fa-upload"></i> <b>Upload</b></a>
        </div>
 
      </div>
