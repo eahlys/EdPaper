@@ -10,6 +10,7 @@ use App\User;
 use Storage;
 use Response;
 use App\Doc;
+use App\Share;
 use App\Categorie;
 
 class DocumentsController extends Controller
@@ -45,8 +46,11 @@ class DocumentsController extends Controller
 		if (!Auth::check()) return redirect('/login');
 		$doc = Doc::where([['userId', '=', Auth::user()->id], ['id', '=', $id]])->firstOrFail();
 		$cats = Categorie::where('userId', Auth::user()->id)->orderBy('title', 'ASC')->get();
+		$share = Share::where([['userId', '=', Auth::user()->id], ['docId', '=', $id]])->first();
+		if (is_null($share)) $shared = false;
+		else $shared = true;
 		$docCats = $doc->categories()->orderBy('title', 'ASC')->pluck('id')->toArray();
-		return view('doc.show', ['doc' => $doc, 'cats' => $cats, 'docCats' => $docCats]); 
+		return view('doc.show', ['doc' => $doc, 'cats' => $cats, 'docCats' => $docCats, 'shared' => $shared]); 
 	}
 
 	public function viewfile($id){

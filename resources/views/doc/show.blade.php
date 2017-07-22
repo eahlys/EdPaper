@@ -33,8 +33,9 @@
 	@endif
 	<div class="row">
 		<div class="col-xs-5">
-			<a href="/doc/{{ $doc->id }}/view" class="btn btn-info" target="_blank"><i class="fa fa-eye"></i><span class="hidden-xs"> Open</span></a>
+			<a href="/doc/{{ $doc->id }}/view" class="btn btn-info" target="_blank"><i class="fa fa-eye"></i><span class="hidden-xs"> View</span></a>
 			<a href="/doc/{{ $doc->id }}/download" class="btn btn-success"><i class="fa fa-download"></i><span class="hidden-xs"> Download</span></a>
+			<a href="/doc/{{ $doc->id }}/share" class="btn @if ($shared) btn-warning @else btn-primary @endif"><i class="fa fa-link"></i><span class="hidden-xs"> @if ($shared) Shared @else Share @endif</span></a>
 		</div>
 		<div class="col-xs-1 pull-right">
 			<button class="btn btn-danger pull-right" type="button" data-toggle="modal" data-target="#delete" aria-expanded="false" aria-controls="collapse}"><i class="fa fa-trash-o"></i></button>
@@ -59,7 +60,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-7">
-			<h2>{{ $doc->title }}
+			<h2> @if ($shared) <i class="fa fa-link"></i> @endif {{ $doc->title }}
 				@foreach ($doc->categories()->get() as $cat)
 				<a href="/cat/{{ $cat->id }}"><span class="badge badge-default">{{ $cat->title }}</span></a>
 				@endforeach

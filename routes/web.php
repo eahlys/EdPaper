@@ -23,6 +23,13 @@ Route::get('/doc/{id}/view', 'DocumentsController@viewfile')->where('id', '[0-9]
 Route::get('/doc/{id}/download', 'DocumentsController@download')->where('id', '[0-9]+');
 Route::get('/doc/{id}/delete', 'DocumentsController@delete')->where('id', '[0-9]+');
 
+Route::get('/share/{link}', 'ShareController@show')->where('link', '[a-zA-Z0-9]+');
+Route::get('/share/{link}/view', 'ShareController@view')->where('link', '[a-zA-Z0-9]+');
+Route::get('/share/{link}/download', 'ShareController@download')->where('link', '[a-zA-Z0-9]+');
+
+Route::get('/doc/{id}/share', 'ShareController@share')->where('id', '[0-9]+');
+Route::get('/doc/{id}/share/disable', 'ShareController@disable')->where('id', '[0-9]+');
+
 Route::get('/cat', 'CategoriesController@listall');
 Route::post('/cat/add', 'CategoriesController@add');
 Route::get('/cat/{id}', 'CategoriesController@list')->where('id', '[0-9]+');

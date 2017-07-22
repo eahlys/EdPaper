@@ -13,4 +13,12 @@ class Doc extends Model
 	{
 		return $this->belongsToMany('App\Categorie');
 	}
+	public function share()
+    {
+        return $this->hasOne('App\Share', 'docId');
+    }
+        public function user()
+    {
+        return $this->belongsTo('App\User', 'userId');
+    }
 }

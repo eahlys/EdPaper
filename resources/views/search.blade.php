@@ -42,7 +42,7 @@
         @foreach ($results as $doc)
         <td>{{ $doc->created_at }}</td>
         <td>
-          <a href="/doc/{{ $doc->id }}">{{ $doc->title }}</a>
+          @if (!is_null($doc->share)) <i class="fa fa-link"></i> @endif <a href="/doc/{{ $doc->id }}">{{ $doc->title }}</a>
           @foreach ($doc->categories()->get() as $cat)
           <a href="/cat/{{ $cat->id }}"><span class="badge badge-default">{{ $cat->title }}</span></a>
           @endforeach
