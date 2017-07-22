@@ -45,6 +45,7 @@
 				@endif
 			</table>
 			<p class="text-center">
+				<a href="/cat/shared">Show publicly shared documents</a><br />
 				<a href="/cat/0">Show all documents ({{ $numberDocs }})</a>
 			</p>
 			<form class="form-inline" method="POST" action="/cat/add" style="margin-bottom: 10px;">

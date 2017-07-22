@@ -38,7 +38,8 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12"><i>Shared by {{ $share->doc->user->name }}</i></div>
+		<div class="col-xs-8"><i>Shared by {{ $share->doc->user->name }}</i></div>
+		<div class="col-xs-3 pull-right">Uploaded {{ $share->doc->created_at->format('d/m/Y H:i') }}</div>
 	</div>
 	<div class="row">
 		<div class="col-sm-12">

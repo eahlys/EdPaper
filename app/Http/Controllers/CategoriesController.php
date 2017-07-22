@@ -9,6 +9,7 @@ use \Input;
 use App\User;
 use App\Doc;
 use App\Categorie;
+use App\Share;
 
 class CategoriesController extends Controller
 {
@@ -32,6 +33,13 @@ class CategoriesController extends Controller
 			$docs = $cat->docs()->orderBy('title', 'ASC')->paginate(15);
 		}
 		return view('cat.list', ['docs' => $docs, 'catTitle' => $catTitle]);
+	}
+
+	public function listshare(){
+		if (!Auth::check()) return redirect('/login');
+		$shares = Share::where('userId', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(15);
+		$catTitle = "Shared documents";
+		return view('cat.sharedlist', ['shares' => $shares, 'catTitle' => $catTitle]);
 	}
 
 	public function add(Request $request){

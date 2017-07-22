@@ -32,6 +32,7 @@ Route::get('/doc/{id}/share/disable', 'ShareController@disable')->where('id', '[
 
 Route::get('/cat', 'CategoriesController@listall');
 Route::post('/cat/add', 'CategoriesController@add');
+Route::get('/cat/shared', 'CategoriesController@listshare');
 Route::get('/cat/{id}', 'CategoriesController@list')->where('id', '[0-9]+');
 Route::get('/cat/{id}/edit', 'CategoriesController@edit')->where('id', '[0-9]+');
 Route::post('/cat/{id}/edit', 'CategoriesController@sendedit')->where('id', '[0-9]+');
