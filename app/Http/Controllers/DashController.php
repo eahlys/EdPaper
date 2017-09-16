@@ -24,6 +24,7 @@ class DashController extends Controller
 		return view('account', ['user' => $user]);
 	}
 
+// TODO : Add password change user
 	public function editAccount(Request $request){
 		if (!Auth::check()) return redirect('/login');
 		$this->validate($request, [
