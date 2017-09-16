@@ -13,7 +13,7 @@ class DashController extends Controller
 {
 	public function index(){
 		if (!Auth::check()) return view('index');
-		$lastDocs = Doc::where('userId', Auth::user()->id)->orderBy('id', 'desc')->limit(5)->get();
+		$lastDocs = Doc::where('userId', Auth::user()->id)->orderBy('id', 'desc')->limit(10)->get();
 		return view('dashboard', ['lastDocs' => $lastDocs]);
 	}
 
@@ -38,5 +38,5 @@ class DashController extends Controller
 		$user->save();
 		return redirect('/account');
 	}
-	
+
 }
