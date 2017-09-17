@@ -24,7 +24,7 @@ class DocumentsController extends Controller
 	public function upload(Request $request){
 		$this->validate($request, [
 			'title' => 'max:40',
-			'document' => 'required|max:50000|mimes:pdf'
+			'document' => 'required|max:25000|mimes:pdf'
 			]);
 		if (!Auth::check()) return redirect('/login');
 
@@ -50,7 +50,7 @@ class DocumentsController extends Controller
 		if (is_null($share)) $shared = false;
 		else $shared = true;
 		$docCats = $doc->categories()->orderBy('title', 'ASC')->pluck('id')->toArray();
-		return view('doc.show', ['doc' => $doc, 'cats' => $cats, 'docCats' => $docCats, 'shared' => $shared]); 
+		return view('doc.show', ['doc' => $doc, 'cats' => $cats, 'docCats' => $docCats, 'shared' => $shared]);
 	}
 
 	public function viewfile($id){

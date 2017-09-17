@@ -1,7 +1,7 @@
 ## EdPaper
 Demo : https://paper.edra.ovh (demo@demo.com / demoaccount)
 
-DocMaster is a laravel-php driven Document organizer made for PDFs. They are stored on your server (unencrypted, beware !)
+EdPaper is a laravel-php driven Document organizer made for PDFs. They are stored on your server (unencrypted, beware !)
 You'll need composer and PHP (5 or 7).
 
 Run a `composer install`/`php composer install`(depends of your configuration) within the app root path (you'll need composer)

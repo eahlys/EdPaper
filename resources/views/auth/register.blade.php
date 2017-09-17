@@ -12,7 +12,14 @@
 <div class="container">
     <div class="row">
         <h2 class="text-center display-4">Register</h2>
-    </div><br />
+    </div>
+    @if ( count( $errors ) > 0 )
+      <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+          {{ $error }}<br>
+        @endforeach
+      </div>
+    @endif
     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
         {{ csrf_field() }}
 
@@ -71,8 +78,13 @@
                 @endif --}}
             </div>
         </div>
-        <div class="form-group">
+        <div class="from-group">
             <div class="col-md-6 col-md-offset-4">
+                {!! Recaptcha::render() !!}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-4"><br />
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-btn fa-user"></i> Submit
                 </button>

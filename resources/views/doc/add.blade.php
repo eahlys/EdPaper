@@ -17,7 +17,7 @@
     @if ( count( $errors ) > 0 )
     <div class="alert alert-danger">
         @foreach ($errors->all() as $error)
-        {{ $error }}<br>        
+        {{ $error }}<br>
         @endforeach
     </div>
     @endif
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
-         <div class="col-sm-offset-4 col-sm-5"><input type="file" name="document" id="document"> (max 50MB, PDF only)</div>
+         <div class="col-sm-offset-4 col-sm-5"><input type="file" name="document" id="document"> (max 25MB, PDF only)</div>
      </div>
 
      @if (count($cats) > 0)
