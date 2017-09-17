@@ -12,4 +12,4 @@ Open `.env` and fill it with your database details and your Google's reCaptcha s
 
 Run `php artisan migrate` from the app's root path, and you're all done.
 
-You just have to create an apache/nginx vhost.
+You just have to create an apache/nginx vhost (site root must me the `public` folder).
