@@ -12,7 +12,14 @@
 <div class="container">
     <div class="row">
         <h2 class="text-center display-4">Login</h2>
-    </div><br />
+    </div>
+    @if ( count( $errors ) > 0 )
+      <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+          {{ $error }}<br>
+        @endforeach
+      </div>
+    @endif
     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
         {{ csrf_field() }}
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
