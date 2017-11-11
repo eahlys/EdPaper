@@ -4,15 +4,24 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+	"repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/pazuzu156/recaptcha.git",
+			"reference":"dev-patch-1"
+		}
+	],
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.4.*",
+        "laravel/framework": "5.5.*",
+		"greggilbert/recaptcha": "dev-patch-1",
         "laravel/tinker": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7"
+		"filp/whoops": "~2.0",
+        "phpunit/phpunit": "~6.0"
     },
     "autoload": {
         "classmap": [
@@ -38,6 +47,10 @@
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize"
         ],
+		"post-autoload-dump": [
+			"Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+			"php artisan package:discover"
+		],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
