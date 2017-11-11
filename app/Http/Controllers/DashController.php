@@ -27,13 +27,21 @@ class DashController extends Controller
 
 	public function editAccount(Request $request){
 		if (!Auth::check()) return redirect('/login');
-		$this->validate($request, [
-			'name' => 'max:30|required',
-			'email' => 'required|email',
-			'password' => 'max:100|min:6',
-			'passwordconfirm' => 'max:100|min:6',
-			'currentpassword' => 'max:100',
-		]);
+		if (Input::get('password') != ""){
+			$this->validate($request, [
+				'name' => 'max:30|required',
+				'email' => 'required|email',
+				'password' => 'max:100|min:6',
+				'passwordconfirm' => 'max:100|min:6',
+				'currentpassword' => 'max:100',
+			]);
+		}
+		else {
+			$this->validate($request, [
+				'name' => 'max:30|required',
+				'email' => 'required|email',
+			]);
+		}
 		$user = User::where('id', Auth::user()->id)->first();
 		$checkEmail = User::where('email', Input::get('email'))->first();
 		if (!is_null($checkEmail) && $checkEmail->id != Auth::user()->id) return Redirect::back()->withErrors(['Specified e-mail address already exists']);
@@ -46,7 +54,7 @@ class DashController extends Controller
 				$user->password = Hash::make(Input::get('password'));
 			}
 			else return Redirect::back()->withErrors(['Current password is incorrect. Please try again.']);
- 		}
+		}
 		$user->save();
 		return redirect('/account');
 	}
