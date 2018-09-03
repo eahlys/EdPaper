@@ -1,5 +1,4 @@
 ## EdPaper
-Demo : https://paper.edra.ovh (demo@demo.com / demoaccount)
 
 EdPaper is a laravel-php driven Document organizer made for PDFs. They are stored on your server (unencrypted, beware !)
 You'll need composer and PHP (5 or 7).
